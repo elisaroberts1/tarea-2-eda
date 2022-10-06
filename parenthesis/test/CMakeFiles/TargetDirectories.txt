@@ -1,0 +1,3 @@
+/Users/Elisa/Desktop/OGAZ-ROBERTS-TAREA2/tarea 2 eda/parenthesis/test/CMakeFiles/test.dir
+/Users/Elisa/Desktop/OGAZ-ROBERTS-TAREA2/tarea 2 eda/parenthesis/test/CMakeFiles/edit_cache.dir
+/Users/Elisa/Desktop/OGAZ-ROBERTS-TAREA2/tarea 2 eda/parenthesis/test/CMakeFiles/rebuild_cache.dir

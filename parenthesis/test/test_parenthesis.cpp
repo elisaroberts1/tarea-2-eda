@@ -11,10 +11,10 @@ bool validateParenthesis(const std::string &input, int* pos){
 	int i = 0;
 	Stack stack;
 	while (!error && i < input.length()){
-		if (input[i] == '(') {
+		if (input[i] == '<') {
 			stack.push(new Node(input[i]));
 		}
-		if (input[i] == ')') {
+		if (input[i] == '>') {
 			if (stack.isEmpty()){
 				error = true;
 			}
