@@ -14,12 +14,14 @@ bool validateParenthesis(const std::string &input, int* pos){
 	while (!error && i < input.length()){
 		if (input[i] == '<') {
 			stack.push(new Node(input[i]));
-			if (input[i+1]== '/'){
-				acumulando.push(new Node(input[i+2]));
-				}
-			else{
-				acumulando.push(new Node(input[i+1]));
-			}
+			//if (input[i+1]== '/'){
+				//if(acumulando.top() == input[i+2]){
+				//	acumulando.pop()
+			//	}
+		//}
+			//else{
+			//	acumulando.push(new Node(input[i+1]));
+			//}
 		}
 		if (input[i] == '>') {
 			if (stack.isEmpty()){
