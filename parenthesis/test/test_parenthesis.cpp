@@ -16,15 +16,19 @@ bool validateParenthesis(const std::string &input, int* pos){
 		if (input[i] == '<') {
 			stack.push(new Node(input[i]));
 			if (input[i+1]!= '/'){
-				for (int j;j=1;j++){//hacer que acumule lo que sigue en input
+				for (int j=1;j!='>';j++){//hacer que acumule lo que sigue en input
 					acumulando.push(new Node(input[j]));
 				}
 				}
-			}
+			
 			else{
-				for(int a;a=tamano-1;a--){
+				for(int a=tamano-1;a!='/';a--){
 					if (acumulando.top()== input[a]){//comenzar del carcater final para asi ir sacando del ultimo elemento
 						acumulando.pop();
+					}
+					else{
+						error=true;
+					}
 				}
 			}
 		}
