@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstring>
 #include <string.h>
+#include <fstream>
 
 using namespace eda;
 
@@ -51,6 +52,23 @@ bool validateParenthesis(const std::string &input, int* pos){
 	return !error;
 }
 
+std::string  readTextFile(const std::string &filename){
+		std::ifstream f_in(filename);
+		char symbol = '\0';
+		std::string leyendo;
+		if (f_in.is_open()){
+			while (f_in.get(symbol)){
+				std::cout<<symbol;
+				leyendo+=symbol;
+			}
+			std::cout<<std::endl;
+		}
+		else{
+			std::cout<< "Error al leer " << filename << std::endl;
+		}
+		f_in.close();
+	return leyendo;
+}
 
 int main(int nargs, char** vargs){
 	std::string input;
