@@ -3,6 +3,7 @@
 #include "adts/stack.hpp"
 #include <iostream>
 #include <cstring>
+#include <string.h>
 
 using namespace eda;
 
@@ -23,7 +24,8 @@ bool validateParenthesis(const std::string &input, int* pos){
 			
 			else{
 				for(int a=tamano-1;a!='/';a--){
-					if (acumulando.top()== input[a]){//comenzar del carcater final para asi ir sacando del ultimo elemento
+					char n = *acumulando.top();
+					if (n == input[a]){//comenzar del carcater final para asi ir sacando del ultimo elemento
 						acumulando.pop();
 					}
 					else{
