@@ -11,17 +11,22 @@ bool validateParenthesis(const std::string &input, int* pos){
 	int i = 0;
 	Stack stack;
 	Stack acumulando;
+	int tamano=input.size();
 	while (!error && i < input.length()){
 		if (input[i] == '<') {
 			stack.push(new Node(input[i]));
-			//if (input[i+1]== '/'){
-				//if(acumulando.top() == input[i+2]){
-				//	acumulando.pop()
-			//	}
-		//}
-			//else{
-			//	acumulando.push(new Node(input[i+1]));
-			//}
+			if (input[i+1]!= '/'){
+				for (int j;j=1;j++){//hacer que acumule lo que sigue en input
+					acumulando.push(new Node(input[j]));
+				}
+				}
+			}
+			else{
+				for(int a;a=tamano-1;a--){
+					if (acumulando.top()== input[a]){//comenzar del carcater final para asi ir sacando del ultimo elemento
+						acumulando.pop();
+				}
+			}
 		}
 		if (input[i] == '>') {
 			if (stack.isEmpty()){
