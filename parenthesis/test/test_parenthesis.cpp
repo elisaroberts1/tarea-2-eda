@@ -11,43 +11,33 @@ bool validate(const std::string &input, int* pos){
 	bool error = false;
 	int i = 0;
 	Stack stack;
-	Stack acumulando;
 	int tamano=input.size();
 	std::string body = "body";
+	const char * b = "body";
+	std::string b1 = "/body";
+	const char * bb1 = "/body";
 	while (!error && i < input.length()){
 		if (input[i] == '<') {
 			int o = i + 1;
 			int j = 0;
 			std::string clave;
-			while(input[o]!='>' && input[i+1] != '/'){
+			while(input[o]!='>'){
 				clave += input[o];
 				o++;
 			}
-			if(clave == body){
-				stack.push(new Node(input[i]));
+			if(clave == b){
+				stack.push(new Node('a'));
 			}
-			if (input[i+1]!= '/'){
-				for (int j=1;j!='>';j++){//hacer que acumule lo que sigue en input
-					acumulando.push(new Node(input[j]));
+			else if(clave == bb1){
+				if(stack.isEmpty()){
+					error = true;
 				}
-			}
-			else{ 
-				for(int a=tamano-1;a!='/';a--){
-					if (acumulando.top()->getData() ==input[a]){//comenzar del carcater final para asi ir sacando del ultimo elemento
-						acumulando.pop();
-					}
-					else{
-						error=true;
-					}
+				else if(stack.top()->getData() == 'a'){
+					stack.pop();
 				}
-			}
-		}
-		if (input[i] == '>') {
-			if (stack.isEmpty()){
-				error = true;
-			}
-			else{
-				stack.pop();
+				else{
+					error = true;
+				}
 			}
 		}
 		i = i + 1;
@@ -78,7 +68,7 @@ std::string read(const std::string &filename){
 }
 
 int main(int nargs, char* argv[1]){
-	std::string filename("doc1.html");
+	std::string filename(argv[1]);
 	std::string texto=read(filename);//hacer que lea el html
 	int pos=0;
 	bool status = validate(texto, &pos);
