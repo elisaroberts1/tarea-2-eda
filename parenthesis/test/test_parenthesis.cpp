@@ -16,6 +16,17 @@ bool validate(const std::string &input, int* pos){
 	const char * b = "body";
 	std::string b1 = "/body";
 	const char * bb1 = "/body";
+
+	std::string p = "p";
+	const char * pp = "p";
+	std::string p1 = "/p";
+	const char * pp1 = "/p";
+
+	std::string c = "center";
+	const char * cc = "center";
+	std::string c1 = "/center";
+	const char * cc1 = "/center";
+
 	while (!error && i < input.length()){
 		if (input[i] == '<') {
 			int o = i + 1;
@@ -39,6 +50,37 @@ bool validate(const std::string &input, int* pos){
 					error = true;
 				}
 			}
+			if(clave == pp){
+				stack.push(new Node('p'));
+			}
+			else if(clave == pp1){
+				if(stack.isEmpty()){
+					error = true;
+				}
+				else if(stack.top()->getData() == 'p'){
+					stack.pop();
+				}
+				else{
+					error = true;
+				}
+			}
+
+			if(clave == cc){
+				stack.push(new Node('c'));
+			}
+			else if(clave == cc1){
+				if(stack.isEmpty()){
+					error = true;
+				}
+				else if(stack.top()->getData() == 'c'){
+					stack.pop();
+				}
+				else{
+					error = true;
+				}
+			}
+
+
 		}
 		i = i + 1;
 	}
