@@ -7,7 +7,7 @@
 
 using namespace eda;
 
-bool validateParenthesis(const std::string &input, int* pos){
+bool validate(const std::string &input, int* pos){
 	bool error = false;
 	int i = 0;
 	Stack stack;
@@ -69,10 +69,10 @@ std::string  readTextFile(const std::string &filename){
 }
 
 int main(int nargs, char** argv[1]){
-	
+	//hacer que lea el html
 	int pos=0;
 	std::getline(std::cin, input);
-	bool status = validateParenthesis(input, &pos);
+	bool status = validate(input, &pos);
 	if (status){
 		std::cout<< " Expresión Correcta " << std::endl;
 	}
