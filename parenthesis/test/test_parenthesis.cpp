@@ -50,7 +50,7 @@ bool validate(const std::string &input, int* pos){
 	return !error;
 }
 
-std::string  readTextFile(const std::string &filename){
+std::string  read(const std::string &filename){
 		std::ifstream f_in(filename);
 		char symbol = '\0';
 		std::string leyendo;
@@ -69,10 +69,10 @@ std::string  readTextFile(const std::string &filename){
 }
 
 int main(int nargs, char** argv[1]){
-	//hacer que lea el html
+	std::string filename("doc1.nhtml");
+	std::string texto=read(filename);//hacer que lea el html
 	int pos=0;
-	std::getline(std::cin, input);
-	bool status = validate(input, &pos);
+	bool status = validate(texto, &pos);
 	if (status){
 		std::cout<< " Expresión Correcta " << std::endl;
 	}
