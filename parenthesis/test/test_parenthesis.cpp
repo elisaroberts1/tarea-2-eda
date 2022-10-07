@@ -1,5 +1,4 @@
 #include "adts/node.hpp"
-#include "adts/queue.hpp"
 #include "adts/stack.hpp"
 #include <iostream>
 #include <cstring>
@@ -23,10 +22,9 @@ bool validateParenthesis(const std::string &input, int* pos){
 				}
 				}
 			
-			else{
+			else{ 
 				for(int a=tamano-1;a!='/';a--){
-					char n = *acumulando.top();
-					if (n == input[a]){//comenzar del carcater final para asi ir sacando del ultimo elemento
+					if (acumulando.top()->getData() ==input[a]){//comenzar del carcater final para asi ir sacando del ultimo elemento
 						acumulando.pop();
 					}
 					else{
@@ -70,10 +68,9 @@ std::string  readTextFile(const std::string &filename){
 	return leyendo;
 }
 
-int main(int nargs, char** vargs){
-	std::string input;
+int main(int nargs, char** argv[1]){
+	
 	int pos=0;
-	std::cout<<"Ingresa expresión: ";
 	std::getline(std::cin, input);
 	bool status = validateParenthesis(input, &pos);
 	if (status){
