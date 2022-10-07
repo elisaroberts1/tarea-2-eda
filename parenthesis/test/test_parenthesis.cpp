@@ -13,15 +13,24 @@ bool validate(const std::string &input, int* pos){
 	Stack stack;
 	Stack acumulando;
 	int tamano=input.size();
+	std::string body = "body";
 	while (!error && i < input.length()){
 		if (input[i] == '<') {
-			stack.push(new Node(input[i]));
+			int o = i + 1;
+			int j = 0;
+			std::string clave;
+			while(input[o]!='>'){
+				clave += input[o];
+				o++;
+			}
+			if(clave == body){
+				stack.push(new Node(input[i]));
+			}
 			if (input[i+1]!= '/'){
 				for (int j=1;j!='>';j++){//hacer que acumule lo que sigue en input
 					acumulando.push(new Node(input[j]));
 				}
-				}
-			
+			}
 			else{ 
 				for(int a=tamano-1;a!='/';a--){
 					if (acumulando.top()->getData() ==input[a]){//comenzar del carcater final para asi ir sacando del ultimo elemento
@@ -50,7 +59,7 @@ bool validate(const std::string &input, int* pos){
 	return !error;
 }
 
-std::string  read(const std::string &filename){
+std::string read(const std::string &filename){
 		std::ifstream f_in(filename);
 		char symbol = '\0';
 		std::string leyendo;
@@ -68,8 +77,8 @@ std::string  read(const std::string &filename){
 	return leyendo;
 }
 
-int main(int nargs, char** argv[1]){
-	std::string filename("doc1.nhtml");
+int main(int nargs, char* argv[1]){
+	std::string filename("doc1.html");
 	std::string texto=read(filename);//hacer que lea el html
 	int pos=0;
 	bool status = validate(texto, &pos);
