@@ -19,7 +19,7 @@ bool validate(const std::string &input, int* pos){
 			int o = i + 1;
 			int j = 0;
 			std::string clave;
-			while(input[o]!='>'){
+			while(input[o]!='>' && input[i+1] != '/'){
 				clave += input[o];
 				o++;
 			}
